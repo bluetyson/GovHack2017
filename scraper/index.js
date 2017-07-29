@@ -14,11 +14,22 @@ phantom.create().then(ph => {
     return scrapedPage.property('content')
 }).then(content => {
     //console.log(content);
-    var data = {};
+    var data = [];
 
     $ = cheerio.load(content);
-    var trimmedContent = $('.ui-jqgrid-bdiv').eq(1).find('table').html();
-    console.log(trimmedContent);
+    // Extrat all data into an array
+    $('.ui-jqgrid-bdiv').eq(1).find('table').find('tr').each((i, elm) => {
+        // Read time stamp
+        var timestamp = $(elm).attr('id');
+        //console.log($(elm).attr('id'));
+        // Get the value
+        var value = $(elm).children('td').eq(1).attr('title');
+        //console.log($(elm).children('td').eq(1).attr('title'));
+        if(timestamp && value) {
+            data.push({"timestamp": timestamp, "value": value});
+        }
+    })
+    console.log(data);
 
     // tidy up and stop phantomjs
     scrapedPage.close();
