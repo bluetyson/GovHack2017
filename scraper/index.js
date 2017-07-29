@@ -1,24 +1,26 @@
-
 var phantom = require("phantom");
 var cheerio = require("cheerio");
-var _ph, _page, _outObj;
+
+var pageHolder, scrapedPage, _outObj;
 
 phantom.create().then(ph => {
-    _ph = ph;
-    return _ph.createPage();
+    pageHolder = ph;
+    return pageHolder.createPage();
 }).then(page => {
-    _page = page;
-    return _page.open('https://www.waterconnect.sa.gov.au/Systems/SiteInfo/Pages/Default.aspx?site=A5041014&period=HRLY#Real-Time,Real-Time%20Data');
+    scrapedPage = page;
+    return scrapedPage.open('https://www.waterconnect.sa.gov.au/Systems/SiteInfo/Pages/Default.aspx?site=A5041014&period=HRLY#Real-Time,Real-Time%20Data');
 }).then(status => {
     console.log(status);
-    return _page.property('content')
+    return scrapedPage.property('content')
 }).then(content => {
     //console.log(content);
     var data = {};
 
     $ = cheerio.load(content);
-    var x = $('.ui-jqgrid-bdiv').eq(1).find('table').html();
-    console.log("CHEERIO", x);
-    _page.close();
-    _ph.exit();
-}).catch(e => console.log(e));
+    var trimmedContent = $('.ui-jqgrid-bdiv').eq(1).find('table').html();
+    console.log(trimmedContent);
+
+    // tidy up and stop phantomjs
+    scrapedPage.close();
+    pageHolder.exit();
+}).catch(error => console.log(error));
