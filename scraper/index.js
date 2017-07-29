@@ -17,7 +17,7 @@ phantom.create().then(ph => {
     var data = {};
 
     $ = cheerio.load(content);
-    var x = $(".ui-jqgrid-bdiv table").next().html();
+    var x = $('.ui-jqgrid-bdiv').eq(1).find('table').html();
     console.log("CHEERIO", x);
     _page.close();
     _ph.exit();
