@@ -373,3 +373,18 @@ transition: all 0.2s ease-in-out;
     }
   }
 }
+
+.img-fluid {
+  max-width: none;
+  width:100%;
+}
+
+
+.flow-light-detail {
+  overflow: hidden;
+  height:0;
+  transition: height 0.2s linear;
+    .henleybeach-active & {
+      height:50vw;
+    }
+}
