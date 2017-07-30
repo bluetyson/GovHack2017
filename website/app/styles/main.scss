@@ -271,8 +271,12 @@ h4 {
 
 main {
   margin-top: 130px;
+  font-family: "Intro Black";
 }
 
+.flow-light {
+  z-index:2;
+}
 .fullwidth {
   position:relative;
   z-index: 1;
@@ -321,6 +325,7 @@ transition: all 0.2s ease-in-out;
   border: 5px solid white;
   text-align: right;
   position: relative;
+  margin:1em;
 
   &:after {
     content:'';
@@ -346,8 +351,9 @@ transition: all 0.2s ease-in-out;
   height:100px;
   border-radius: 200em;
   border: 5px solid white;
-  text-align: right;
+  text-align: left;
   position: relative;
+  margin:1em;
 
   &:after {
     content:'';
