@@ -1,0 +1,37 @@
+.footer {
+  margin-top: 5em;
+  background: white;
+  padding: 3em;
+}
+
+.social {
+
+  .social-link {
+    border-radius: 255px;
+    background: $grey;
+    display: block;
+    width:3em;
+    margin: 0 0.5em;
+    height:3em;
+    color:white;
+    transition: 0.15s background ease-in-out, 0.15s transform ease-in-out;
+    span {
+      height:100%;
+    }
+    &:hover {
+      text-decoration: none;
+      transform:scale(1.15);
+      background-color: $yellow;
+    }
+  }
+}
+
+
+a.footer-link {
+  color:$grey;
+  margin-right: 1.6em;
+  &:hover {
+    color:$yellow;
+    text-decoration: none;
+  }
+}
