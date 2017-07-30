@@ -1,3 +1,4 @@
+node_modules/
 website/.tmp
 website/bower_components
 website/node_modules
